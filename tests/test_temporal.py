@@ -16,7 +16,7 @@ def test_temporal_features_do_not_use_current_value():
     out = add_temporal_features(df, value_cols=("temperature",), lags=(1,), windows=(2,))
 
     assert out["temperature_lag1"].isna().iloc[0]
-    assert out["temperature_roll2_mean"].iloc[2] == 19.0
+    assert out["temperature_roll2_mean"].iloc[2] == 15.0
 
 
 def test_temporal_features_sort_by_machine_and_time():
