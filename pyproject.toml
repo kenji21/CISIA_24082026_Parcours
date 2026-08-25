@@ -48,6 +48,15 @@ dependencies = [
     # loguru : journalisation (logs) simple et lisible.
     "loguru>=0.7",
     "dvc>=3.67.1",
+    "fastapi>=0.111",  # API web rapide + doc /docs auto (module 25)
+    "uvicorn[standard]>=0.30",  # serveur ASGI qui fait tourner l'API (module 25)
+    "python-multipart>=0.0.9",  # upload de fichiers pour /predict-image (module 25)
+    "prometheus-fastapi-instrumentator>=8.0.2",  # expose /metrics pour Prometheus (module 33)
+    "prefect>=3.7.6",  # orchestration du flow ingest→predict→store (modules 29-30)
+    "sqlalchemy>=2.0.51",  # accès base de données / upsert (module 30)
+    "psycopg[binary]>=3.3.4",  # pilote PostgreSQL (module 28/30)
+    "scipy>=1.18.0",  # tests statistiques pour le drift : KS (module 31)
+    "evidently>=0.7.21",  # rapports de data drift (module 32)
 ]
 
 # --- [project.optional-dependencies] : dependances OPTIONNELLES --------------
