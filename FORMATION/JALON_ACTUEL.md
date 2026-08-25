@@ -1,6 +1,6 @@
-# Jalon actuel : 03-j2-matin-m25
+# Jalon actuel : 04-j2-apres-midi-m26
 
-Etat revele pour J2 matin : socle M24 et activite API FastAPI M25.
+Etat revele pour J2 apres-midi : API M25 et activite securite M26.
 
 - Source locale de provenance : starter remis au precedent groupe au demarrage
   du Sprint 3, commit historique `0d02af0`.
@@ -9,8 +9,8 @@ Etat revele pour J2 matin : socle M24 et activite API FastAPI M25.
 - La reference data-science semantique de fin S2 (Marine) reste separee ; ses
   chiffres et artefacts ne sont pas fusionnes avec le RF starter.
 - Donnees, modele RF, metadata, package minimal et tests sont presents.
-- Aucun garde-fou M26, Dockerfile, orchestration Prefect, drift ou Game Day
-  n'est revele dans ce jalon.
+- Aucun Dockerfile, Compose, orchestration Prefect, drift ou Game Day n'est
+  revele dans ce jalon.
 
 Ce jalon n'est pas nomme `baseline_stagiaire_exacte`, car le dernier checkout
 reel de ce groupe en fin M22 n'est pas present dans les sources locales.
