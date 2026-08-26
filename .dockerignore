@@ -1,0 +1,56 @@
+# =============================================================================
+#  FICHIER : .dockerignore
+#  RÔLE    : liste des fichiers/dossiers à NE PAS envoyer à Docker quand il
+#            construit l'image. C'est l'équivalent d'un .gitignore, mais pour
+#            le "contexte de build" Docker.
+#  MODULE  : 27 (conteneurisation / packaging de l'API).
+#
+#  POURQUOI C'EST IMPORTANT (notion de "contexte de build") :
+#    - Quand on lance `docker build .`, Docker prend TOUT le dossier courant (le
+#      "contexte") et l'envoie au moteur Docker AVANT de lire le Dockerfile.
+#    - Si on n'exclut rien, on enverrait des Go inutiles (caches, venv, données,
+#      historique Git...) -> build LENT, image potentiellement plus lourde, et
+#      RISQUE DE SÉCURITÉ (un .env avec des secrets pourrait fuiter dans l'image).
+#    - Conclusion : on garde un contexte MINIMAL = uniquement ce qui sert vraiment
+#      à construire l'application. Tout le reste est ignoré ici.
+#
+#  RÈGLES DE SYNTAXE :
+#    - Une entrée par ligne = un motif de fichiers/dossiers à EXCLURE.
+#    - '*' remplace n'importe quelle suite de caractères (dans un même niveau).
+#    - '**' traverse les sous-dossiers (récursif).
+#    - Un '!' au début = EXCEPTION = "ré-inclure" quelque chose qu'on avait exclu.
+#      L'ordre compte : une exception doit venir APRÈS l'exclusion qu'elle annule.
+# =============================================================================
+
+# .dockerignore — variante A (le modèle pré-entraîné est livré dans l'image)
+# Contexte de build minimal : on exclut le lourd/inutile, mais on GARDE artifacts/models.
+
+# Historique Git complet : inutile dans l'image et parfois volumineux.
+.git
+# Workflows CI/CD GitHub : servent au dépôt, pas à l'exécution de l'appli.
+.github
+# Environnements virtuels locaux : l'image recrée le sien.
+.venv*
+venv*
+# Caches et bytecode Python : régénérables.
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+# Secrets locaux : ne jamais les envoyer dans le contexte de build.
+.env
+# Documentation et outillage de développement.
+*.md
+tests
+dist
+Makefile
+.pre-commit-config.yaml
+# Données : non nécessaires en variante A, où le modèle est déjà entraîné.
+data
+
+# Variante A : exclure artifacts/ en bloc SAUF le modèle livré (exception récursive).
+# (Variante B : retirer ces 3 lignes ET la ligne `data` ci-dessus pour entraîner dans l'image.)
+# Exclure tout artifacts/, puis ré-inclure le modèle livré et son contenu.
+artifacts/*
+!artifacts/models
+!artifacts/models/**
