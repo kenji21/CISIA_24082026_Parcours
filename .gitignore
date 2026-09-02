@@ -12,3 +12,5 @@ build/
 !artifacts/models/.gitkeep
 !artifacts/models/rf.joblib
 !artifacts/models/model_metadata.json
+mlruns
+mlflow.db

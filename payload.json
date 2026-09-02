@@ -1,0 +1,13 @@
+{
+  "machine_id": "MACH-07",
+  "readings": [
+    {"timestamp": "2025-02-01T00:00:00", "temperature": 50, "pressure_bar": 195.0},
+    {"timestamp": "2025-02-01T01:00:00", "temperature": 51, "pressure_bar": 195.5},
+    {"timestamp": "2025-02-01T02:00:00", "temperature": 52, "pressure_bar": 196.0},
+    {"timestamp": "2025-02-01T03:00:00", "temperature": 53, "pressure_bar": 196.5},
+    {"timestamp": "2025-02-01T04:00:00", "temperature": 54, "pressure_bar": 197.0},
+    {"timestamp": "2025-02-01T05:00:00", "temperature": 55, "pressure_bar": 197.5},
+    {"timestamp": "2025-02-01T06:00:00", "temperature": 56, "pressure_bar": 198.0},
+    {"timestamp": "2025-02-01T07:00:00", "temperature": 57, "pressure_bar": 198.5}
+  ]
+}
